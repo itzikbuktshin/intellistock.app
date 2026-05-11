@@ -1,325 +1,146 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html><html dir="rtl" lang="he">
 <head>
-  <meta charset="utf-8" />
-  <title>Executive Catalyst Report — Multi‑Ticker</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <style>
-    body { font-family: Arial, Helvetica, sans-serif; margin: 0; padding: 24px; background: #f6f8fa; color: #111; }
-    .container { max-width: 1200px; margin: 0 auto; }
-    header { margin-bottom: 20px; }
-    h1 { font-size: 24px; margin: 0 0 6px 0; }
-    p.lead { margin: 0; color: #444; }
-    .summary { background: #fff; border-radius: 8px; padding: 16px; box-shadow: 0 1px 3px rgba(16,24,40,0.06); margin-bottom: 18px; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; }
-    .card { background: #fff; border-radius: 8px; padding: 16px; box-shadow: 0 1px 3px rgba(16,24,40,0.06); }
-    .card h2 { margin: 0 0 8px 0; font-size: 18px; color: #0b4a7b; }
-    .card .sub { color: #666; font-size: 13px; margin-bottom: 10px; }
-    .section-title { font-weight: 600; margin: 10px 0 6px 0; color: #222; font-size: 14px; }
-    ul { margin: 6px 0 12px 18px; color: #333; }
-    li { margin: 6px 0; }
-    .impact { display:inline-block; padding: 2px 8px; border-radius: 12px; font-size: 12px; color: #fff; }
-    .impact.high { background: #c0392b; }
-    .impact.med { background: #e67e22; }
-    .impact.low { background: #16a085; }
-    .watchlist { background: #f1f5f9; padding: 10px; border-radius: 6px; font-size: 13px; }
-    footer { margin-top: 20px; font-size: 13px; color: #555; }
-    .recommend { background: #fff; border-radius: 8px; padding: 16px; box-shadow: 0 1px 3px rgba(16,24,40,0.06); margin-top: 12px; }
-    .actions { display:flex; gap:8px; flex-wrap:wrap; margin-top:8px; }
-    .pill { background:#eef2ff; padding:6px 10px; border-radius:14px; font-size:13px; color:#1e3a8a; }
-    .muted { color:#666; font-size:13px; }
-  </style>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;700&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<title>דוח קטליסטים למשקיעים — דחוף</title>
+<style>
+  html,body{height:100%;margin:0;background:#0f1117;color:#e2e8f0;font-family:Heebo, Arial, sans-serif}
+  .container{max-width:980px;margin:32px auto;padding:24px}
+  header{border-bottom:1px solid rgba(226,232,240,0.04);padding-bottom:16px;margin-bottom:20px}
+  h1{font-size:22px;margin:0;color:#e2e8f0}
+  .date{font-size:13px;color:#9ca3af;margin-top:6px}
+  .summary{margin:18px 0 26px;font-size:15px;line-height:1.6;color:#cbd5e1}
+  .cards{display:grid;grid-template-columns:1fr;gap:14px}
+  @media(min-width:880px){ .cards{grid-template-columns:repeat(2,1fr)} }
+  .card{background:#1a1d27;border-radius:12px;box-shadow:0 6px 18px rgba(2,6,23,0.6);padding:16px 18px;position:relative;overflow:hidden;border-left:6px solid #f59e0b}
+  .card h2{margin:0;font-size:16px;color:#e2e8f0;display:flex;align-items:center;gap:10px}
+  .ticker{font-weight:700;color:#3b82f6;font-family:monospace}
+  .badge{width:12px;height:12px;border-radius:50%;display:inline-block;margin-left:8px;box-shadow:0 0 0 4px rgba(0,0,0,0.25)}
+  .sentiment-text{font-size:13px;color:#cbd5e1;margin-top:8px}
+  .muted{color:#9ca3af;font-size:13px;margin-top:6px}
+  .card p{margin:8px 0 0;font-size:14px;color:#e2e8f0;line-height:1.45}
+  .left-green{border-left-color:#22c55e}
+  .left-red{border-left-color:#ef4444}
+  .left-yellow{border-left-color:#f59e0b}
+  .badge-green{background:#22c55e}
+  .badge-red{background:#ef4444}
+  .badge-yellow{background:#f59e0b}
+  .section-title{color:#e2e8f0;font-size:15px;margin:22px 0 10px;border-left:3px solid #3b82f6;padding-left:10px}
+  .catalysts{background:#0f1117;padding:12px 8px;border-radius:8px}
+  .cat-item{background:#13141a;padding:12px;border-radius:10px;margin-bottom:10px;border-left:4px solid #3b82f6}
+  .cat-item h3{margin:0;font-size:14px;color:#e2e8f0}
+  .cat-item p{margin:8px 0 0;color:#cbd5e1;font-size:13px;line-height:1.5}
+  .strategy{background:#1a1d27;padding:14px;border-radius:12px;margin-top:16px;border-left:6px solid #3b82f6}
+  footer{margin-top:26px;color:#9ca3af;font-size:12px}
+</style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>Multi‑Ticker Executive Catalyst Report</h1>
-      <p class="lead">Consolidated, actionable catalyst list and monitoring guidance for NVDA, MSFT, DLR, EQIX, AES, NEE, FLR, and LMT.</p>
-    </header>
+<div class="container">
+  <header>
+    <h1>קטליסטים ותזת סיכונים — עדכון מהיר לתיק</h1>
+    <div class="date">11 במאי 2026</div>
+  </header>
 
-    <section class="summary">
-      <div class="section-title">Executive Summary</div>
-      <ul>
-        <li>Primary near‑term drivers across the portfolio are quarterly earnings and management commentary — these are the highest‑leverage events for re‑rating or confirmation of trend.</li>
-        <li>Technology/AI (NVDA, MSFT) catalysts center on product launches, AI monetization metrics and hyperscaler deployments. Missing financials for NVDA limit quantified valuation sensitivity without recent LTM figures.</li>
-        <li>Data‑center REITs (DLR, EQIX) and colocation providers are driven by leasing/leasing wins, development stabilization and debt/refinancing outcomes; REIT valuations remain rate‑sensitive.</li>
-        <li>Power and utility names (AES, NEE) hinge on project CODs, PPA/contracts, regulatory decisions (state PSCs, FERC) and credit/financing outcomes.</li>
-        <li>Industrial / EPC / Defense (FLR, LMT) catalysts: project execution updates, backlog and large contract awards (DoD/FMS) — execution failures or material project charges are immediate red flags for FLR; LMT benefits from large awards and FMS approvals.</li>
-        <li>Cross‑cutting macro risks: interest rates / 10‑yr yields, credit spreads, and geopolitical/regulatory developments (export controls, antitrust, energy policy) can materially alter multiples or TAM.</li>
-      </ul>
-      <div class="muted">Use the per‑ticker cards below for concise event lists, signals to watch, and suggested monitoring actions.</div>
-    </section>
-
-    <section class="grid">
-      <!-- NVDA -->
-      <article class="card" aria-labelledby="nvda">
-        <h2 id="nvda">NVDA — Key Catalysts & Monitoring</h2>
-        <div class="sub">Focus: Data‑center demand, product launches, hyperscaler adoption, regulatory/export controls</div>
-
-        <div class="section-title">Near term (0–3 months)</div>
-        <ul>
-          <li>Quarterly earnings & management guidance — data‑center revenue, gross/operating margins, guidance vs consensus. <span class="impact high">Impact: High</span></li>
-          <li>NVIDIA GTC / product conference announcements — new GPU/accelerator launches and software roadmap (Omniverse, AI Enterprise). <span class="impact med">Impact: Medium–High</span></li>
-          <li>Hyperscaler deployment disclosures (AWS, MSFT, Google, Meta) — design wins/backlog signals. <span class="impact high">Impact: High</span></li>
-          <li>Regulatory/export control updates affecting China shipments. <span class="impact high">Impact: High</span></li>
-        </ul>
-
-        <div class="section-title">Medium / Long term</div>
-        <ul>
-          <li>New accelerator product ramps (Blackwell successors), TSMC wafer allocations, supply/capacity updates. <span class="impact high">6–12 months</span></li>
-          <li>Competitive launches (AMD/Intel/hyperscaler chips) and software monetization traction (ARR, licensing). <span class="impact medium‑high">12+ months</span></li>
-          <li>Regulatory/antitrust inquiries, large M&A or strategic partnerships. <span class="impact variable">Longer term</span></li>
-        </ul>
-
-        <div class="section-title">Practical watchlist & metrics</div>
-        <div class="watchlist">
-          Data‑center revenue (YoY/QoQ), ASPs & units, gross/operating margins, China revenue exposure, free cash flow/net cash‑debt, customer concentration (top‑5 cloud %), inventory/backlog, product availability / TSMC allocations.
-        </div>
-
-        <div class="section-title">Data limitation & next step</div>
-        <p class="muted">Quantifying valuation sensitivity requires recent LTM revenue, net income/EBITDA, cash & debt and diluted shares. Recommended follow‑up: fetch latest financials and upcoming earnings date for scenario DCF or multiple sensitivity work.</p>
-      </article>
-
-      <!-- MSFT -->
-      <article class="card" aria-labelledby="msft">
-        <h2 id="msft">MSFT — Key Catalysts & Monitoring</h2>
-        <div class="sub">Focus: Azure / Intelligent Cloud growth, AI monetization (Copilot / Azure OpenAI), capex and regulatory developments</div>
-
-        <div class="section-title">Near term</div>
-        <ul>
-          <li>Quarterly earnings & guidance — Azure growth and Commercial Cloud are primary drivers. <span class="impact high">Impact: High</span></li>
-          <li>Conference calls and management commentary — consumption KPIs for Azure AI / Copilot, ARR‑like metrics. <span class="impact high">Impact: High</span></li>
-          <li>Earnings‑driven derivative flows and analyst revisions. <span class="impact med">Impact: Medium</span></li>
-        </ul>
-
-        <div class="section-title">Medium term (1–6 months)</div>
-        <ul>
-          <li>Build / Ignite product announcements — Copilot features, developer tooling and Azure AI enhancements. <span class="impact med">Impact: Medium–High</span></li>
-          <li>Commercialization milestones for Azure OpenAI/Copilot — usage, pricing, pilot‑to‑paid conversions. <span class="impact high">Impact: High</span></li>
-          <li>Capex/data‑center guidance and large enterprise/government contract awards. <span class="impact med">Impact: Medium</span></li>
-        </ul>
-
-        <div class="section-title">Longer term</div>
-        <ul>
-          <li>Regulatory/antitrust developments, large M&A, gaming/content cycles, Windows/Surface refreshes. <span class="impact medium">Impact: Medium–High</span></li>
-        </ul>
-
-        <div class="section-title">Practical watchlist</div>
-        <div class="watchlist">
-          Alerts: earnings date & call; Build/Ignite dates; Azure y/y growth %, Commercial Cloud revenue & margins; Copilot/Azure AI consumption metrics; capex guidance; major government/enterprise contracts; buyback/dividend announcements.
-        </div>
-        <p class="muted">Suggested deliverable: a compact alert list or trade‑trigger rules (buy/trim/hedge thresholds tied to Azure growth and capex scenarios).</p>
-      </article>
-
-      <!-- DLR -->
-      <article class="card" aria-labelledby="dlr">
-        <h2 id="dlr">Digital Realty (DLR) — Key Catalysts & Monitoring</h2>
-        <div class="sub">Focus: FFO/AFFO releases, large leases (hyperscalers), development stabilization and refinancing</div>
-
-        <div class="section-title">Near term (days–weeks)</div>
-        <ul>
-          <li>Quarterly earnings / FFO/AFFO and guidance — leasing metrics, occupancy and WALE. <span class="impact high">Impact: High</span></li>
-          <li>Dividend declaration or payout commentary. <span class="impact med">Impact: Medium–High</span></li>
-          <li>Large hyperscaler leasing announcements. <span class="impact high">Impact: High</span></li>
-        </ul>
-
-        <div class="section-title">Medium term</div>
-        <ul>
-          <li>Development completions & stabilization (pre‑leases, time‑to‑stabilize). <span class="impact med">Impact: Medium</span></li>
-          <li>Debt refinancing and credit rating moves; M&A/portfolio optimization. <span class="impact high">Impact: High</span></li>
-          <li>Peer results (Equinix, CyrusOne) as signaling events. <span class="impact med">Impact: Medium</span></li>
-        </ul>
-
-        <div class="section-title">Longer term</div>
-        <ul>
-          <li>Secular AI/hyperscaler demand and regulatory/power availability/ESG impacts. <span class="impact high">Impact: High</span></li>
-        </ul>
-
-        <div class="section-title">Event calendar & red flags</div>
-        <div class="watchlist">
-          Flag: next earnings date, investor day, major utility/regulatory decisions, peer earnings & cloud capex commentary. Red flags: sustained FFO payout >100%, leverage rising vs peers, material tenant concentration exits, large development pipeline with low pre‑lease.
-        </div>
-      </article>
-
-      <!-- EQIX -->
-      <article class="card" aria-labelledby="eqix">
-        <h2 id="eqix">Equinix (EQIX) — Key Catalysts & Monitoring</h2>
-        <div class="sub">Focus: IBX openings/utilization, FFO/AFFO, hyperscaler expansions, debt refinancings</div>
-
-        <div class="section-title">Near term (weeks → 3 months)</div>
-        <ul>
-          <li>Quarterly earnings & guidance — FFO/AFFO, occupancy, interconnection revenue. <span class="impact high">Impact: High</span></li>
-          <li>Analyst updates and Fed rate/macro prints (REIT rate sensitivity). <span class="impact high">Impact: High</span></li>
-          <li>Large customer wins/expansions (hyperscalers). <span class="impact med">Impact: Medium–High</span></li>
-        </ul>
-
-        <div class="section-title">Medium term</div>
-        <ul>
-          <li>Data center openings & utilization ramps; debt refinancing/capital markets activity. <span class="impact med">Impact: Medium–High</span></li>
-          <li>M&A or asset dispositions and guidance on capex mix. <span class="impact med">Impact: Medium</span></li>
-        </ul>
-
-        <div class="section-title">Longer term</div>
-        <ul>
-          <li>Edge adoption, 5G rollout and geopolitical/data‑sovereignty risks. <span class="impact high">Impact: High</span></li>
-        </ul>
-
-        <div class="section-title">Practical monitoring</div>
-        <div class="watchlist">
-          Alerts: earnings dates & transcripts, 8‑K filings for material contracts, IBX launch press, debt maturity schedule, hyperscaler capex announcements, 10‑yr Treasury/FOMC calendar.
-        </div>
-      </article>
-
-      <!-- AES -->
-      <article class="card" aria-labelledby="aes">
-        <h2 id="aes">AES — Key Catalysts & Monitoring</h2>
-        <div class="sub">Focus: PPAs, project CODs (storage/renewables), dividend & leverage, regulatory rulings</div>
-
-        <div class="section-title">High‑priority / Near term</div>
-        <ul>
-          <li>Quarterly earnings & conference call — contracted vs merchant mix, FCF and net debt. <span class="impact high">Impact: High</span></li>
-          <li>Dividend declaration / coverage confirmation. <span class="impact med">Impact: Medium–High</span></li>
-          <li>Debt/refinancing news and rating agency commentary; PPA/project completion announcements. <span class="impact med">Impact: Medium–High</span></li>
-          <li>Regulatory decisions in key jurisdictions (Puerto Rico, Chile, Colombia, Brazil). <span class="impact med">Impact: Medium</span></li>
-        </ul>
-
-        <div class="section-title">Medium / Long term</div>
-        <ul>
-          <li>Project commissioning milestones, asset sales/portfolio optimization, large M&A/JV deals, policy changes impacting tax credits or incentives. <span class="impact medium">Impact: Medium–High</span></li>
-          <li>Shift to long‑term contracted revenue mix and leverage improvement — structural re‑rating potential. <span class="impact high">Impact: High</span></li>
-        </ul>
-
-        <div class="section-title">Watchlist</div>
-        <div class="watchlist">
-          Next earnings & transcripts, 10‑Q/10‑K for maturities and covenants, investor presentations (COD schedules), regulatory dockets, credit agency announcements, project‑level press releases.
-        </div>
-      </article>
-
-      <!-- NEE -->
-      <article class="card" aria-labelledby="nee">
-        <h2 id="nee">NextEra Energy (NEE) — Key Catalysts & Monitoring</h2>
-        <div class="sub">Focus: project CODs, Florida PSC rate cases, interconnection/permit risk, capex and financing</div>
-
-        <div class="section-title">Top catalysts</div>
-        <ul>
-          <li>Quarterly earnings & calls — utility rate‑base growth, renewables CODs, guidance and FCF. <span class="impact high">Impact: High</span></li>
-          <li>Investor day / strategic update — long‑term targets and capex plan. <span class="impact med">Impact: Medium</span></li>
-          <li>Major project CODs and financing closings; large M&A or asset sales. <span class="impact med">Impact: Medium–High</span></li>
-          <li>Florida PSC decisions and FERC/ISO rulemakings, IRA/tax credit guidance. <span class="impact high">Impact: High</span></li>
-        </ul>
-
-        <div class="section-title">Macro & seasonal risks</div>
-        <ul>
-          <li>Interest rates / Treasury yields and credit rating actions. <span class="impact high">Impact: High</span></li>
-          <li>Weather/hurricane impacts in Florida; interconnection/permitting bottlenecks. <span class="impact med">Impact: Medium</span></li>
-        </ul>
-
-        <div class="section-title">Monitoring checklist</div>
-        <div class="watchlist">
-          IR calendar (earnings, investor day), Florida PSC docket searches, 8‑Ks for CODs and financings, credit agency pages, ISO interconnection queue data, forward power prices.
-        </div>
-      </article>
-
-      <!-- FLR -->
-      <article class="card" aria-labelledby="flr">
-        <h2 id="flr">Fluor (FLR) — Key Catalysts & Monitoring</h2>
-        <div class="sub">Focus: project execution, backlog quality, liquidity and covenant status, federal awards</div>
-
-        <div class="section-title">Near term (high impact)</div>
-        <ul>
-          <li>Quarterly earnings & conference call — project charges, backlog composition (fixed‑price vs reimbursable), FCF and working capital. <span class="impact high">Impact: High</span></li>
-          <li>10‑Q / 8‑K filings — material project disclosures, covenant waivers, reserve recognition. <span class="impact high">Impact: High</span></li>
-          <li>Large backlog updates and project‑specific problem disclosures. <span class="impact high">Impact: High</span></li>
-          <li>Liquidity and refinancing updates — revolver draws, covenant breaches, rating actions. <span class="impact high">Impact: High</span></li>
-        </ul>
-
-        <div class="section-title">Medium term / strategic</div>
-        <ul>
-          <li>Government/DoD awards (SMR, mission work), energy transition contract wins (CCUS/H2), management remediation plans, M&A/activist events. <span class="impact med">Impact: Medium–High</span></li>
-        </ul>
-
-        <div class="section-title">Materiality heuristics & trade framework</div>
-        <div class="watchlist">
-          Use market‑cap heuristics to size material charges (>3–5% market cap = stock‑moving). Daily: filings & unusual volumes. Pre‑earnings: 8‑Ks and backlog detail. Suggested action rules: sell/hedge on >3% market‑cap project charge or guidance withdrawal; buy/add after 3 consecutive quarters of positive FCF and no new charges.
-        </div>
-      </article>
-
-      <!-- LMT -->
-      <article class="card" aria-labelledby="lmt">
-        <h2 id="lmt">Lockheed Martin (LMT) — Key Catalysts & Monitoring</h2>
-        <div class="sub">Focus: DoD contract awards, FMS approvals, program test outcomes and backlog/FCF</div>
-
-        <div class="section-title">Near term (0–3 months)</div>
-        <ul>
-          <li>Quarterly earnings & investor‑day updates — backlog, FCF, margins and guidance. <span class="impact high">Impact: High</span></li>
-          <li>Large contract awards and FMS notifications (DoD & export approvals). <span class="impact high">Impact: High</span></li>
-          <li>Program tests and milestone outcomes (missile tests, satellite launches). <span class="impact med">Impact: Medium–High</span></li>
-        </ul>
-
-        <div class="section-title">Medium / long term</div>
-        <ul>
-          <li>U.S. defense budget & appropriations outcomes, production‑rate decisions, major program award down‑selects (NGAD/next‑gen). <span class="impact high">Impact: High</span></li>
-          <li>Geopolitical escalations prompting accelerated FMS / supplemental spending. <span class="impact high">Impact: High</span></li>
-        </ul>
-
-        <div class="section-title">Monitoring checklist</div>
-        <div class="watchlist">
-          Sources: investor relations & SEC filings, Defense.gov contract feeds, State Dept FMS notifications, DoD budget & Congressional markups, program test releases. Suggested triggers: backlog growth, sustained FCF beats and buyback moves = buy; program failures or legal/regulatory events = trim/watch.
-        </div>
-      </article>
-    </section>
-
-    <section class="recommend">
-      <div class="section-title">Strategic Recommendations (cross‑ticker)</div>
-
-      <ol>
-        <li><strong>Prioritize earnings & management calls:</strong> Set primary alerts for each ticker's next earnings date and post‑earnings analyst notes. Earnings and guidance changes are the highest‑probability, highest‑impact events across all positions.</li>
-
-        <li><strong>Event triage rules:</strong>
-          <ul>
-            <li>For growth/AI names (NVDA, MSFT): Treat AI usage/consumption metrics and hyperscaler disclosures as multi‑quarter directional signals. Require two consecutive quarters of confirmed AI monetization strength to increase exposure materially.</li>
-            <li>For REITs/data‑center (DLR, EQIX): Link position changes to evidence that development projects stabilize at underwriting yields and to favorable refinancing outcomes. Use rate‑shock scenarios to size downside risk.</li>
-            <li>For power/utilities (AES, NEE): Monitor CODs, PPA tenors and regulatory outcomes. Dividend risk maps to leverage and FCF — reduce exposure on guide cuts or covenant stress.</li>
-            <li>For project‑execution names (FLR): Establish hard stop/hedge triggers for material project charges (>3% market cap) or covenant notices.</li>
-            <li>For defense (LMT): Positive bias to backlog additions, FMS approvals and favorable budget actions; trade around confirmed award flow and test successes.</li>
-          </ul>
-        </li>
-
-        <li><strong>Alert set & watchlist (actionable):</strong> Create automated alerts for:
-          <div class="actions">
-            <span class="pill">Earnings release + transcript</span>
-            <span class="pill">8‑K SEC filings</span>
-            <span class="pill">Major product/event dates (GTC, Build, Ignite)</span>
-            <span class="pill">DoD/Defense.gov contract notices & FMS</span>
-            <span class="pill">PSC/FERC rule changes & ISO queue updates</span>
-            <span class="pill">TSMC/allocation or supply announcements</span>
-          </div>
-        </li>
-
-        <li><strong>Portfolio sizing and hedging:</strong>
-          <ul>
-            <li>For high beta/high multiple names (NVDA, MSFT): maintain hedges (options around earnings/conferences) and consider staged buys on confirmed consumption beats.</li>
-            <li>For REITs/utilities: size positions versus duration/rate sensitivity and use rate scenarios to stress test dividend coverage.</li>
-            <li>For FLR: prefer short‑dated hedges and avoid adding until execution/ liquidity stabilizes.</li>
-          </ul>
-        </li>
-
-        <li><strong>Data & modeling next steps I can perform:</strong>
-          <ul>
-            <li>Fetch latest financials and upcoming earnings dates (recommended first for NVDA to quantify valuation sensitivities).</li>
-            <li>Build a 3‑scenario DCF or multiple sensitivity table for NVDA/MSFT tied to AI monetization outcomes.</li>
-            <li>Produce a concise alert feed (6–10 events) formatted for an alert tool for any ticker you select.</li>
-            <li>Run a short scenario analysis for Fluor showing stock move sensitivity to a defined project charge using market‑cap heuristics.</li>
-          </ul>
-        </li>
-      </ol>
-
-      <div class="muted">Which follow‑up would you like? (e.g., fetch NVDA financials & earnings date; build MSFT Azure consumption trade triggers; produce watchlist with dates for REITs/NEE; run scenario stress on FLR.)</div>
-    </section>
-
-    <footer>
-      <div class="muted">Report generated from provided catalyst summaries. No live market data was fetched. If you authorize, I can retrieve current filings and dates to convert this into dated watchlists and quantified scenario tables.</div>
-    </footer>
+  <div class="summary">
+    דו"ח קצר על 8 סימולים מרכזיים: NVDA, MU, VRT, DLR, EQIX, ESLT, OXY ו‑SOXX — מה צפוי להזיז שוקיות בטווח הקרוב‑בינוני ומה לבדוק מיידית. מרבית התזזיות יגיעו מרבעונים, הודעות מוצר/קונטרקטים והחלטות רגולטוריות/מקרו; יש להבחין בין אירועי חד‑פעמי לבין שינויים בטרנדים מקבילים (software monetization, memory cycle, hyperscaler capex). המלצה אסטרטגית בסוף הדוח מציעה מסגרת פעולה לטריידים קצרים מול משקיעים ארוכי טווח.
   </div>
+
+  <div class="cards">
+    <div class="card left-green">
+      <h2><span class="ticker">NVDA</span> — NVIDIA <span class="badge badge-green" title="עלייתי"></span></h2>
+      <div class="sentiment-text">מומנטום: עלייתי / חשיפה גבוהה ל‑AI</div>
+      <p>הקטליסט המרכזי הקרוב הוא הדו"חות וה‑GTC: נתחו Data Center revenue, GPU shipments ו‑software ARR. ציפייה: הדלפות מוצריות או עדכוני ארכיטקטורה עם שיפורי perf/watt יזרזו הזמנות; אזהרה — הנחיות חלשות או בניית מלאים יגרמו לתיקון חד.</p>
+      <div class="muted">לצפות: guidance, backlog, TSMC supply notes.</div>
+    </div>
+
+    <div class="card left-yellow">
+      <h2><span class="ticker">MU</span> — Micron <span class="badge badge-yellow" title="נייטרלי"></span></h2>
+      <div class="sentiment-text">מומנטום: נייטרלי‑מחזורי</div>
+      <p>המחזור הזיכרון נשאר השדה — רבעון, ASPs ו‑bit shipments קובעים הכל. דיווחים של TrendForce/DRAMeXchange ו‑hyperscaler capex יכתיבו מהלך חד; הנדנודה בין beat ל‑miss בדיווח יכולה להניע תנודות של שני ספרות.</p>
+      <div class="muted">לצפות: DRAM/NAND ASP, inventory days, capex guidance.</div>
+    </div>
+
+    <div class="card left-yellow">
+      <h2><span class="ticker">VRT</span> — Vertiv <span class="badge badge-yellow" title="נייטרלי"></span></h2>
+      <div class="sentiment-text">מומנטום: נייטרלי‑תלוי היפרסקלרים</div>
+      <p>Bookings, backlog והמרת הזמנות לשחרור הכנסות הם מדד המפתח; beats עם שיפור בשירותים ותיקונים במגמה יוצרים כפלים חיוביים. סיכון מרכזי: האטת capex בעולם ענן או שכיחות ביטולי חוזים.</p>
+      <div class="muted">לצפות: order intake, services growth, gross margin.</div>
+    </div>
+
+    <div class="card left-yellow">
+      <h2><span class="ticker">DLR</span> — Digital Realty <span class="badge badge-yellow" title="נייטרלי"></span></h2>
+      <div class="sentiment-text">מומנטום: נייטרלי‑רגיש לריבית</div>
+      <p>FFO/AFFO, same‑store NOI ולייזינג מול היפרסקלרים מנהיגים את התמחור. refinancing וחשיפה למועדי חוב קרובים הופכים כל פרסום לקטליסט מיידי — משקל גבוה להודעת דוח והסבר על פרופיל חוב.</p>
+      <div class="muted">לצפות: supplemental leasing metrics, maturities, hedging profile.</div>
+    </div>
+
+    <div class="card left-yellow">
+      <h2><span class="ticker">EQIX</span> — Equinix <span class="badge badge-yellow" title="נייטרלי"></span></h2>
+      <div class="sentiment-text">מומנטום: נייטרלי‑צמיחה מתונה</div>
+      <p>FFO/AFFO ויכולת לממש פיתוחים חדשים הם קריטיים; מהלך חיובי יבוא מהאצה ב‑lease‑up ו‑hyperscaler commitments. חשיפה לריביות ולפרויקטים מתעכבים יכולה לדחוף תיקון מהיר.</p>
+      <div class="muted">לצפות: development pipeline, large customer renewals, payout coverage.</div>
+    </div>
+
+    <div class="card left-green">
+      <h2><span class="ticker">ESLT</span> — Elbit Systems <span class="badge badge-green" title="עלייתי"></span></h2>
+      <div class="sentiment-text">מומנטום: עלייתי‑הזמנות ממשלתיות</div>
+      <p>פרסי ממשלה גדולים, אישורי FMS ותוכניתות לייצור מקומי בארה"ב הם הטריגר החזק ביותר. שחרור backlog וראוונה של תוכניות R&D להמרה לייצור יכול לטריגר re‑rating מהיר.</p>
+      <div class="muted">לצפות: contract awards, export‑license updates, backlog conversion.</div>
+    </div>
+
+    <div class="card left-red">
+      <h2><span class="ticker">OXY</span> — Occidental <span class="badge badge-red" title="יורדי"></span></h2>
+      <div class="sentiment-text">מומנטום: יורדי‑רגיש למחיר נפט ולמימון</div>
+      <p>OXY רגיש ל‑WTI ולמסגרת המימון; דיווחים על FCF, מדיניות buyback ומימוש חובות הם קטליסטים מיידיים. סיכון ממוקד: חומת מיישום חוב/מועדי פירעון בסביבה של עליית עלויות מימון.</p>
+      <div class="muted">לצפות: production updates, buyback/dividend decisions, debt maturities.</div>
+    </div>
+
+    <div class="card left-yellow">
+      <h2><span class="ticker">SOXX</span> — SOXX (Semiconductor ETF) <span class="badge badge-yellow" title="נייטרלי"></span></h2>
+      <div class="sentiment-text">מומנטום: נייטרלי‑תלוי תזרים אירועים</div>
+      <p>ETF זה רגיש לדו"חות של המשקלות הגדולות (NVDA, ASML ועוד), ל‑SEMI book‑to‑bill ולמדדי זיכרון. מהלך חד באחד ממשקולות ימטיר תנודה על הקרן — הצמד עיניים לארבעה דוחות בחודש הקרוב.</p>
+      <div class="muted">לצפות: top‑10 earnings, SIA/SEMI data, major capex announcements.</div>
+    </div>
+  </div>
+
+  <div class="section-title">קטליסטים קרובים — מה לבדוק מיד</div>
+  <div class="catalysts">
+    <div class="cat-item">
+      <h3>1) דו"חות רבעוניים ודיווחי Guidance</h3>
+      <p>מעל לכל — NVDA, MU, VRT, DLR, EQIX ו‑ESLT: שימו לב ל‑Data Center revenue, DRAM/NAND ASPs, bookings/backlog, FFO/AFFO ו־guidance. אלו האירועים שיכולים להניע תזוזות חדות ביום הדיווח.</p>
+    </div>
+
+    <div class="cat-item">
+      <h3>2) כנסים והשקות מוצריות מרכזיות</h3>
+      <p>NVIDIA GTC / Hot Chips / SEMICON / trade shows — הכרזות ארכיטקטורה, טייפ־אאוט וזמני ramp יכולים לממקד הזמנות; Micron ו‑TSMC ramp notes ישפיעו על תמחור זיכרון ו‑supply.</p>
+    </div>
+
+    <div class="cat-item">
+      <h3>3) מדדי תעשייה ומדדים מקרו</h3>
+      <p>SEMI book‑to‑bill, SIA monthly sales, TrendForce memory reports, ו‑Fed/CPI/PCE — השפעה על SOXX, MU ו‑REITs דרך סנטימנט ומחירי מימון.</p>
+    </div>
+
+    <div class="cat-item">
+      <h3>4) רגולציה וייצוא</h3>
+      <p>US export controls על שבבים וציוד אלקטרוני יכולים להשפיע על NVDA, SOXX ו‑MU; אישורי FMS ודיונים פוליטיים ישפיעו על ESLT. עקבו אחר הודעות Commerce/DSCA וממשלות.</p>
+    </div>
+
+    <div class="cat-item">
+      <h3>5) חוב ופינוי מימון</h3>
+      <p>DLR, EQIX ו‑OXY — maturities, refinancing ו־hedge profile שקולים למניפולציה של ערך תאגידי. כל עדכון יכול לשנות את תמחור המנייה מיידית.</p>
+    </div>
+  </div>
+
+  <div class="section-title">המלצה אסטרטגית</div>
+  <div class="strategy">
+    <p><strong>טווח קצר (טריידר):</strong> מסחר סביב אירועי רבעון ומוצר — הגדירו stop loss קשיחים, שמרו גודל פוזיציה קטן יחסית והתמקדו ב‑NVDA וכהזדמנויות volatile ב‑MU/SOXX. השתמשו באופציות להקטנת סיכון לפני הודעות גדולות.</p>
+    <p><strong>טווח בינוני‑ארוך (משקיע):</strong> בנו חשיפה מבוססת טרנדים יסודיים: software ARR ב‑NVDA, HBM leadership ב‑Micron, שירותים recurring ב‑Vertiv/Equinix, והיחס חוב/EBITDA ב‑DLR/OXY. קנו בתנודות משמעותיות כאשר הטרנדים המבניים נשארים שלמים.</p>
+    <p><strong>ניהול סיכונים:</strong> עקבו אחרי export controls, ריכוז דרישה בהיפרסקלרים, memory ASPs ושינויי ריבית. קבעו טריגרים ברורים ליציאה (דוגמה: הורדת guidance שמשמעותית ל‑FFO/ARR או שינוי >2–3% ב‑FFO/AFFO עבור REITs).</p>
+  </div>
+
+  <footer>
+    אם תרצו: אני יכול למשוך לוח זמנים מדויק של תאריכי earnings/GTC/קונפרנסים והופעות המשקיעים עבור הסימולים המצוינים — או לבנות כרטיסי alerts מותאמים (3‑monat / 12‑monat). איזה פורמט להעדיף?
+  </footer>
+</div>
 </body>
 </html>
